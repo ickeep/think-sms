@@ -46,7 +46,7 @@ export default class extends think.Service {
     const dfOpts = {
       accessKeyId: '',
       accessKeySecret: '',
-      endpoint: '',
+      endpoint: 'https://dysmsapi.aliyuncs.com',
       apiVersion: '2017-05-25',
       sendEnv: 'prod',
       signName: '',
@@ -103,7 +103,7 @@ export default class extends think.Service {
     }
     const { logTable, logDb } = this.conf
     if (logTable && logDb) {
-      think.model('sms_log', 'logMysql').add(sendLog)
+      think.model(logTable, logDb).add(sendLog)
     }
     return { code, msg, data }
   }
